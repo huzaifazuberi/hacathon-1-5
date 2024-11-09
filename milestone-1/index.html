@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Resume Builder</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <script src="path/to/your/typescript.js"></script>
+
+</head>
+
+<body>
+    <div class="container mt-5">
+        <!-- User Input Form -->
+        <h2>Enter Your Information</h2>
+        <form id="resumeForm">
+            <!-- Basic Info -->
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter your name">
+            </div>
+            
+            <div class="mb-3">
+                <label for="profession" class="form-label">Profession</label>
+                <input type="text" class="form-control" id="profession" placeholder="Enter your profession">
+            </div>
+            <div class="mb-3">
+                <label for="about" class="form-label">About Me</label>
+                <textarea class="form-control" id="about" placeholder="Tell something about yourself"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="contact" class="form-label">Contact Number</label>
+                <input type="text" class="form-control" id="contact" placeholder="Enter your contact number">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+            </div>
+            
+            <!-- Education -->
+            <h4>Education</h4>
+            <div class="mb-3">
+                <label for="education" class="form-label">Education Details</label>
+                <textarea class="form-control" id="education" placeholder="Enter your education details"></textarea>
+            </div>
+
+            <!-- Skills -->
+            <h4>Programming Skills</h4>
+            <div class="mb-3">
+                <label for="skills" class="form-label">Skills (comma separated)</label>
+                <input type="text" class="form-control" id="skills" placeholder="e.g., HTML - 90%, CSS - 75%">
+            </div>
+
+            <!-- Interests -->
+            <h4>Interests</h4>
+            <div class="mb-3">
+                <label for="interests" class="form-label">Interests (comma separated)</label>
+                <input type="text" class="form-control" id="interests" placeholder="e.g., Games, Pets, Music">
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="updateResume()">Generate Resume</button>
+        </form>
+    </div>
+
+    <!-- Resume Display -->
+    <div class="wrapper mt-5">
+        <div class="intro">
+            <div class="profile">
+                <div class="photo">
+                    <img src="pictureHai.jpg" alt="Profile Photo">
+                </div>
+                <div class="bio">
+                    <h1 class="name" id="displayName">Your Name</h1>
+                    <p class="profession" id="displayProfession">Your Profession</p>
+                </div>
+            </div>
+            <div class="intro-section about">
+                <h1 class="title">About Me</h1>
+                <p class="paragraph" id="displayAbout">Your description here...</p>
+            </div>
+            <div class="intro-section contact">
+                <h1 class="title">Contact</h1>
+                <div class="info-section">
+                    <span id="displayContact">Your Contact</span>
+                </div>
+                <div class="info-section">
+                    <span id="displayEmail">Your Email</span>
+                </div>
+            </div>
+        </div>
+        <div class="detail">
+            <div class="detail-section edu">
+                <h2>Education</h2>
+                <p id="displayEducation">Your Education Information</p>
+            </div>
+            <div class="detail-section skills">
+                <h2>Programming Skills</h2>
+                <ul id="displaySkills"></ul>
+            </div>
+            <div class="detail-section interests">
+                <h2>Interests</h2>
+                <ul id="displayInterests"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript to handle user input -->
+    <script>
+        function updateResume() {
+            // Get values from input fields
+            const name = document.getElementById("name").value;
+            const profession = document.getElementById("profession").value;
+            const about = document.getElementById("about").value;
+            const contact = document.getElementById("contact").value;
+            const email = document.getElementById("email").value;
+            const education = document.getElementById("education").value;
+            const skills = document.getElementById("skills").value.split(",");
+            const interests = document.getElementById("interests").value.split(",");
+
+            // Update resume fields with user input
+            document.getElementById("displayName").textContent = name || "Your Name";
+            document.getElementById("displayProfession").textContent = profession || "Your Profession";
+            document.getElementById("displayAbout").textContent = about || "Your description here...";
+            document.getElementById("displayContact").textContent = contact || "Your Contact";
+            document.getElementById("displayEmail").textContent = email || "Your Email";
+            document.getElementById("displayEducation").textContent = education || "Your Education Information";
+
+            // Update skills list
+            const displaySkills = document.getElementById("displaySkills");
+            displaySkills.innerHTML = ""; // Clear previous entries
+            skills.forEach(skill => {
+                const li = document.createElement("li");
+                li.textContent = skill.trim();
+                displaySkills.appendChild(li);
+            });
+
+            // Update interests list
+            const displayInterests = document.getElementById("displayInterests");
+            displayInterests.innerHTML = ""; // Clear previous entries
+            interests.forEach(interest => {
+                const li = document.createElement("li");
+                li.textContent = interest.trim();
+                displayInterests.appendChild(li);
+            });
+        }
+    </script>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+</body>
+<body>
+  <h2>Change the Color of the Box</h2>
+  <div id="colorBox"></div>
+  <button id="changeColorButton" class="btn btn-primary">Change Color</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
